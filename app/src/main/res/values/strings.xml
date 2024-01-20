@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">hitechmart</string>
+    <string name="login_btn_title">Log in</string>
+
+    <string name="onBoarding_password">Password</string>
+    <string name="On_boarding_email_address">Email address</string>
+    <string name="onboarding_forgot_password">Forgot password?</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="postCode">Post Code</string>
+    <string name="acceptText">I accept the terms and privacy policy</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="forgotPasswordText">Don’t worry! It happens. Please enter the email associated with your account.</string>
+    <string name="emailRequest">Enter your email address</string>
+    <string name="sendCode">Send Code</string>
+    <string name="headTextOnConfirmEmail">Please check your email</string>
+    <string name="verify">Verify</string>
+    <string name="tvNewPasswordHead">Reset Password</string>
+    <string name="resetNote">Please type something you\'ll remember</string>
+    <string name="newPassword">New password</string>
+    <string name="passwordNote">must be 8 characters</string>
+    <string name="resetPassword">Reset Password</string>
+    <string name="changedPasswordNote">Your password has been changed succesfully</string>
+</resources>
