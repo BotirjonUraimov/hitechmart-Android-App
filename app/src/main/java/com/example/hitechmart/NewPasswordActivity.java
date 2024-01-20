@@ -2,6 +2,7 @@ package com.example.hitechmart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -39,6 +40,42 @@ public class NewPasswordActivity extends BaseActivity<ActivityNewPasswordBinding
             public void onClick(View v) {
                 Intent intent = new Intent(NewPasswordActivity.this, changedPasswordActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        binding.ivHidePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toggle the selected state
+                v.setSelected(!v.isSelected());
+
+                // Toggle password visibility
+                if (v.isSelected()) {
+                    // Show password
+                    binding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    // Hide password
+                    binding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+            }
+        });
+
+        binding.ivHideConfirmPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toggle the selected state
+                v.setSelected(!v.isSelected());
+
+                // Toggle password visibility
+                if (v.isSelected()) {
+                    // Show password
+                    binding.etConfirmPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    // Hide password
+                    binding.etConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
             }
         });
 

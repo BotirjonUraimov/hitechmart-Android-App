@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
     android:background="@color/white">
 
@@ -98,6 +99,7 @@
         />
 
     <EditText
+
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="54dp"
@@ -111,9 +113,10 @@
 
 
     <ImageView
+        android:id="@+id/ivHidePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_eye_password"
+        android:src="@drawable/check_show_hide"
         app:layout_constraintTop_toTopOf="@id/etPassword"
         app:layout_constraintBottom_toBottomOf="@id/etPassword"
         app:layout_constraintRight_toRightOf="@id/etPassword"
@@ -150,9 +153,10 @@
 
 
     <ImageView
+        android:id="@+id/ivHideConfirmPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_eye_show"
+        android:src="@drawable/check_show_hide"
         app:layout_constraintTop_toTopOf="@id/etConfirmPassword"
         app:layout_constraintBottom_toBottomOf="@id/etConfirmPassword"
         app:layout_constraintRight_toRightOf="@id/etConfirmPassword"
@@ -254,14 +258,13 @@
 
     <ImageView
         android:id="@+id/btnAcceptCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_check"
-        app:layout_constraintTop_toBottomOf="@id/teAddressDetails"
-        android:layout_marginTop="13dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_marginLeft="7dp"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/check_box"
         app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/teAddressDetails" />
 
     <TextView
         android:id="@+id/tvAccept"
