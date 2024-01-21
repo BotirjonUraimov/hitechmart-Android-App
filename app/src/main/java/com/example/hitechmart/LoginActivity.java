@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -125,8 +126,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                                 preferenceManager.setValue("refresh_token", authUser.getRefresh_token());
 
 
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
+
 
                             } else {
                                 binding.signInError.setVisibility(View.VISIBLE);
@@ -145,6 +148,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                 }
             }
         });
+
+
 
     }
 

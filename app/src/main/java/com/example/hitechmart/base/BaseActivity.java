@@ -60,7 +60,7 @@ public abstract class BaseActivity<T extends ViewBinding>  extends AppCompatActi
 
 
 
-
+        //for retrofit
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 

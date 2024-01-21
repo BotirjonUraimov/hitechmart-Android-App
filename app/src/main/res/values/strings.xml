@@ -25,4 +25,11 @@
     <string name="invalid_email">invalid email, Please input right format email</string>
     <string name="signIn">Sign in</string>
     <string name="signInError">There is no User with that credential</string>
+    <string name="firstName">Firstname</string>
+    <string name="yourName">Your Firstname</string>
+    <string name="lastName">Lastname</string>
+    <string name="yourLastname">Your Lastname</string>
+    <string name="register">Register</string>
+    <string name="signUpError">All field is required</string>
+    <string name="passwordError">confirm pasword is not same</string>
 </resources>
