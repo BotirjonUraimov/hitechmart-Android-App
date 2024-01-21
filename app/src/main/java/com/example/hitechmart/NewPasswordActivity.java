@@ -20,6 +20,13 @@ public class NewPasswordActivity extends BaseActivity<ActivityNewPasswordBinding
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String newPassword = binding.etPassword.getText().toString();
+        String conformNewPassword = binding.etConfirmPassword.getText().toString();
+
+
+
+
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

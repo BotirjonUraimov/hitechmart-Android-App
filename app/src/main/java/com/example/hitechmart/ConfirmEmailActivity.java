@@ -3,6 +3,7 @@ package com.example.hitechmart;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -21,11 +22,16 @@ public class ConfirmEmailActivity extends BaseActivity<ActivityConfirmEmailBindi
     protected ActivityConfirmEmailBinding inflateViewBinding(LayoutInflater inflater) {
         return ActivityConfirmEmailBinding.inflate(inflater);
     }
+
+
+
     private CountDownTimer countDownTimer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        String code = intent.getStringExtra("verificationCode"); //this is a 4 digit number in string
 
         long duration = 2 * 60 * 1000;
         // Create CountDownTimer
@@ -46,6 +52,30 @@ public class ConfirmEmailActivity extends BaseActivity<ActivityConfirmEmailBindi
                 // You can also handle the completion of the timer here
             }
         }.start();
+
+
+        if (code != null && code.length() == 4) {
+            for (int i = 0; i < code.length(); i++) {
+                int index = i; // Need to declare final or effectively final for use in lambda
+                new Handler().postDelayed(() -> {
+                    char c = code.charAt(index);
+                    switch (index) {
+                        case 0:
+                            binding.code1.setText(String.valueOf(c));
+                            break;
+                        case 1:
+                            binding.code2.setText(String.valueOf(c));
+                            break;
+                        case 2:
+                            binding.code3.setText(String.valueOf(c));
+                            break;
+                        case 3:
+                            binding.code4.setText(String.valueOf(c));
+                            break;
+                    }
+                }, 1000 * i); // Delay i seconds
+            }
+        }
 
 
 
@@ -141,6 +171,8 @@ public class ConfirmEmailActivity extends BaseActivity<ActivityConfirmEmailBindi
 
             }
         });
+
+        binding.tvUserEmail.setText(intent.getStringExtra("email") + " Code: " + intent.getStringExtra("verificationCode"));
 
     }
 
