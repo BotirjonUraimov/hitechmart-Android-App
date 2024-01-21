@@ -1,8 +1,8 @@
 package com.example.hitechmart.model;
-
 import com.google.gson.annotations.SerializedName;
-public class User {
 
+
+public class User {
 
     @SerializedName("id")
     private Integer id;
@@ -25,11 +25,16 @@ public class User {
     @SerializedName("address")
     private String address;
 
+    @SerializedName("access_token")
+    private String access_token;
+
+    @SerializedName("refresh_token")
+    private String refresh_token;
 
     @SerializedName("device_token")
     private String device_token;
 
-    public User(Integer id, String email, String password, String first_name, String last_name, String phone_number, String address, String device_token) {
+    public User(Integer id, String email, String password, String first_name, String last_name, String phone_number, String address,String access_token, String device_token, String refresh_token) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -38,6 +43,8 @@ public class User {
         this.phone_number = phone_number;
         this.address = address;
         this.device_token = device_token;
+        this.access_token = access_token;
+        this.refresh_token = refresh_token;
     }
     public User() {
     }
@@ -115,5 +122,21 @@ public class User {
 
     public void setDevice_token(String device_token) {
         this.device_token = device_token;
+    }
+
+    public String getAccess_token() {
+        return access_token;
+    }
+
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    }
+
+    public String getRefresh_token() {
+        return refresh_token;
+    }
+
+    public void setRefresh_token(String refresh_token) {
+        this.refresh_token = refresh_token;
     }
 }

@@ -22,4 +22,7 @@
     <string name="passwordNote">must be 8 characters</string>
     <string name="resetPassword">Reset Password</string>
     <string name="changedPasswordNote">Your password has been changed succesfully</string>
+    <string name="invalid_email">invalid email, Please input right format email</string>
+    <string name="signIn">Sign in</string>
+    <string name="signInError">There is no User with that credential</string>
 </resources>
