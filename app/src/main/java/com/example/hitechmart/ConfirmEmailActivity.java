@@ -14,8 +14,14 @@ import androidx.annotation.Nullable;
 
 import com.example.hitechmart.base.BaseActivity;
 import com.example.hitechmart.databinding.ActivityConfirmEmailBinding;
+import com.example.hitechmart.model.VerifyCodeRequest;
+import com.example.hitechmart.model.VerifyCodeResponse;
 
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ConfirmEmailActivity extends BaseActivity<ActivityConfirmEmailBinding> {
     @Override
@@ -91,8 +97,43 @@ public class ConfirmEmailActivity extends BaseActivity<ActivityConfirmEmailBindi
         binding.btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConfirmEmailActivity.this, NewPasswordActivity.class);
-                startActivity(intent);
+
+                VerifyCodeRequest verifyCodeRequest = new VerifyCodeRequest();
+                verifyCodeRequest.setEmail(intent.getStringExtra("email"));
+                verifyCodeRequest.setCode(intent.getStringExtra("verificationCode"));
+
+
+                String code1 = binding.code1.getText().toString();
+                String code2 = binding.code2.getText().toString();
+                String code3 = binding.code3.getText().toString();
+                String code4 = binding.code4.getText().toString();
+
+                Call<VerifyCodeResponse> call = mainApi.verifyCode(verifyCodeRequest);
+
+                call.enqueue(new Callback<VerifyCodeResponse>() {
+                    @Override
+                    public void onResponse(Call<VerifyCodeResponse> call, Response<VerifyCodeResponse> response) {
+                        VerifyCodeResponse verifyCodeResponse  = response.body();
+                        if(response.isSuccessful()) {
+                            preferenceManager.setValue("access_token", verifyCodeResponse.getAccess_token());
+                            Intent intent = new Intent(ConfirmEmailActivity.this, NewPasswordActivity.class);
+                            startActivity(intent);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<VerifyCodeResponse> call, Throwable t) {
+
+
+
+                    }
+                });
+
+
+
+
+
             }
         });
 

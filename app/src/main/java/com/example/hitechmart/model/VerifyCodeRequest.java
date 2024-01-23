@@ -1,25 +1,15 @@
 package com.example.hitechmart.model;
 
-public class VerifyEmailResponse {
-    private Integer id;
+public class VerifyCodeRequest {
     private String email;
     private String code;
 
-    public VerifyEmailResponse(Integer id, String email, String code) {
-    this.id = id;
+    public VerifyCodeRequest () {
+
+    }
+    public VerifyCodeRequest (String email, String code) {
     this.email = email;
     this.code = code;
-    }
-    public VerifyEmailResponse() {
-
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -38,6 +28,3 @@ public class VerifyEmailResponse {
         this.code = code;
     }
 }
-
-
-
