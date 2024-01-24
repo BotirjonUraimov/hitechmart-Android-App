@@ -33,4 +33,5 @@
     <string name="signUpError">All field is required</string>
     <string name="passwordError">confirm pasword is not same</string>
     <string name="verificationEmailError">there is no User with that email</string>
+    <string name="resetPasswordError">passwords are note same!</string>
 </resources>

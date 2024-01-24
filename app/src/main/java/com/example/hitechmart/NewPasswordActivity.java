@@ -3,6 +3,7 @@ package com.example.hitechmart;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -10,6 +11,13 @@ import androidx.annotation.Nullable;
 
 import com.example.hitechmart.base.BaseActivity;
 import com.example.hitechmart.databinding.ActivityNewPasswordBinding;
+import com.example.hitechmart.model.ResetRequest;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NewPasswordActivity extends BaseActivity<ActivityNewPasswordBinding> {
     @Override
@@ -21,8 +29,8 @@ public class NewPasswordActivity extends BaseActivity<ActivityNewPasswordBinding
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String newPassword = binding.etPassword.getText().toString();
-        String conformNewPassword = binding.etConfirmPassword.getText().toString();
+        Intent intent = getIntent();
+        String access_token = intent.getStringExtra("access_token");
 
 
 
@@ -45,8 +53,41 @@ public class NewPasswordActivity extends BaseActivity<ActivityNewPasswordBinding
         binding.btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NewPasswordActivity.this, changedPasswordActivity.class);
-                startActivity(intent);
+
+                String newPassword = binding.etPassword.getText().toString();
+                String conformNewPassword = binding.etConfirmPassword.getText().toString();
+
+                if(newPassword.equals(conformNewPassword) && !newPassword.isEmpty() && !conformNewPassword.isEmpty()) {
+
+                    ResetRequest resetRequest = new ResetRequest(newPassword, conformNewPassword);
+                    Log.d("resetRequest", new Gson().toJson(resetRequest));
+
+                    Call<JsonObject> call = mainApi.resetPassword("Bearer " + intent.getStringExtra("access_token"), resetRequest);
+
+                    call.enqueue(new Callback<JsonObject>() {
+                        @Override
+                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                            if(response.isSuccessful()){
+                                Intent intent = new Intent(NewPasswordActivity.this, changedPasswordActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                        }
+                    });
+
+
+
+                }else {
+                    binding.resetPasswordError.setVisibility(View.VISIBLE);
+                }
+
+
+
+
             }
         });
 

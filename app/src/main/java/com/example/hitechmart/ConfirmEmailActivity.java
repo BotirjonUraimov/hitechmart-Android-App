@@ -115,8 +115,11 @@ public class ConfirmEmailActivity extends BaseActivity<ActivityConfirmEmailBindi
                     public void onResponse(Call<VerifyCodeResponse> call, Response<VerifyCodeResponse> response) {
                         VerifyCodeResponse verifyCodeResponse  = response.body();
                         if(response.isSuccessful()) {
-                            preferenceManager.setValue("access_token", verifyCodeResponse.getAccess_token());
+
+
+
                             Intent intent = new Intent(ConfirmEmailActivity.this, NewPasswordActivity.class);
+                            intent.putExtra("access_token", verifyCodeResponse.getAccess_token());
                             startActivity(intent);
                         }
 

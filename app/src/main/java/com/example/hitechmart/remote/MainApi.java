@@ -6,6 +6,7 @@ import com.example.hitechmart.model.User;
 import com.example.hitechmart.model.VerifyCodeRequest;
 import com.example.hitechmart.model.VerifyCodeResponse;
 import com.example.hitechmart.model.VerifyEmailResponse;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,10 +26,10 @@ public interface MainApi {
     @GET("v1/user/verify_email/")
     Call<VerifyEmailResponse> verifyEmail(@Query("email") String email);
 
-    @GET("v1/user/verify_email/")
+    @POST("v1/user/verify_email/")
     Call<VerifyCodeResponse> verifyCode(@Body VerifyCodeRequest verifyCodeRequest);
 
     @POST("v1/user/reset_password/")
-    Call<String> resetPassword(@Header("Authorization") String access_token, @Body ResetRequest resetRequest);
+    Call<JsonObject> resetPassword(@Header("Authorization") String access_token, @Body ResetRequest resetRequest);
 
 }
