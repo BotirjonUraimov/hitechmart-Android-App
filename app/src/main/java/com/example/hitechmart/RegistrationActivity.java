@@ -1,5 +1,6 @@
 package com.example.hitechmart;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -77,6 +78,14 @@ public class RegistrationActivity extends BaseActivity<ActivityRegistrationBindi
             public void onClick(View v) {
                 v.setSelected(!v.isSelected());
 
+            }
+        });
+
+        binding.btnZipCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistrationActivity.this, AddressActivity.class);
+                startActivityForResult(intent, 1000);
             }
         });
 
@@ -159,5 +168,18 @@ public class RegistrationActivity extends BaseActivity<ActivityRegistrationBindi
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode ==1000 && resultCode == Activity.RESULT_OK) {
+            String postcode = data.getStringExtra("postcode");
+            String address = data.getStringExtra("address");
+            binding.etPostCode.setText(postcode);
+            binding.teAddress.setText(address);
+
+        }
     }
 }

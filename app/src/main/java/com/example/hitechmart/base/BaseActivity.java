@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public abstract class BaseActivity<T extends ViewBinding>  extends AppCompatActivity {
 
 
-    private static String BASE_URL = "http://dev-api.shoppingmall.beknumonov.com";
+    private static String BASE_URL = "http://104.236.193.179";
     protected T binding;
 
     public PreferenceManager preferenceManager;

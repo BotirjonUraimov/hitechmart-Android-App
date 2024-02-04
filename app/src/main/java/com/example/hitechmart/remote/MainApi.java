@@ -20,7 +20,7 @@ public interface MainApi {
     @POST("v1/user/")
     Call<User> createUser(@Body User user);
 
-    @POST("v1/auth-token/")
+    @POST("v1/login/")
     Call<User> login(@Body User user);
 
     @GET("v1/user/verify_email/")

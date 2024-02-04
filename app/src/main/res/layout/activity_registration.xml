@@ -274,7 +274,7 @@
         android:layout_marginTop="9dp"
         />
 
-    <EditText
+    <TextView
             android:id="@+id/etPostCode"
             android:layout_width="198dp"
             android:layout_height="54dp"
@@ -303,7 +303,7 @@
 
             />
 
-    <EditText
+    <TextView
         android:id="@+id/teAddress"
         android:layout_width="match_parent"
         android:layout_height="54dp"

@@ -47,6 +47,9 @@
         <activity android:name=".changedPasswordActivity"
             android:theme="@style/Theme.Hitechmart.Onboarding"
             />
+        <activity android:name=".AddressActivity"
+            android:theme="@style/Theme.Hitechmart.Onboarding"
+            />
     </application>
 
 </manifest>
