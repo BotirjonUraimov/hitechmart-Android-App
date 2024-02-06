@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#9643ff</color>
     <color name="stoke_primary_color">#d8dadc</color>
+    <color name="colorLine">#d8dadc</color>
 </resources>

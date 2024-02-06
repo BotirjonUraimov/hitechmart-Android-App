@@ -49,6 +49,11 @@ public class User {
     public User() {
     }
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public User(Integer id, String email, String password, String first_name, String last_name, String phone_number, String address) {
         this.id = id;
         this.email = email;
