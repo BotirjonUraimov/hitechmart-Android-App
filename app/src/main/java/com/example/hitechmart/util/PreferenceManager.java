@@ -3,10 +3,13 @@ package com.example.hitechmart.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.hitechmart.model.User;
 import com.google.firebase.encoders.json.BuildConfig;
+import com.google.gson.Gson;
 
 
 public class PreferenceManager implements PreferenceHelper {
+
     private static String SHARED_PREFERENCE_NAME = BuildConfig.APPLICATION_ID + ".local";
 
     private SharedPreferences mPreference;
@@ -32,6 +35,9 @@ public class PreferenceManager implements PreferenceHelper {
             mPreference.edit().putString(key, (String) value).apply();
         } else if (value.getClass().equals(Boolean.class)) {
             mPreference.edit().putBoolean(key, (Boolean) value).apply();
+        } else if (value.getClass().equals(User.class)) {
+            String json = new Gson().toJson(value);
+            setValue(key, json);
         }
     }
 
@@ -41,8 +47,12 @@ public class PreferenceManager implements PreferenceHelper {
             return mPreference.getString(key, (String) defaultValue);
         } else if (aClass.equals(Boolean.class)) {
             return mPreference.getBoolean(key, (Boolean) defaultValue);
+        } else if (aClass.equals(User.class)) {
+            String json = mPreference.getString(key, "");
+            if (!json.isEmpty()) {
+                return new Gson().fromJson(json, User.class);
+            }
         }
-
         return defaultValue;
     }
 

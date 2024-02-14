@@ -124,6 +124,7 @@ public class ProductsFragment extends BaseFragment<FragmentProductsBinding> {
                     categoryArrayList.addAll(response.body());
                     adapter.notifyDataSetChanged();
 
+
                 }
             }
 

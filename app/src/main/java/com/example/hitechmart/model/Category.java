@@ -7,7 +7,7 @@ public class Category {
     @SerializedName("id")
     private int id;
     @SerializedName("classification")
-    private Classification classification;
+    private int classification;
     @SerializedName("title")
     private String title;
     @SerializedName("is_active")
@@ -19,7 +19,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(int id, String title, Boolean isActive, Boolean isDefault, Classification classification) {
+    public Category(int id, String title, Boolean isActive, Boolean isDefault, int classification) {
         this.id = id;
         this.title = title;
         this.isActive = isActive;
@@ -59,11 +59,11 @@ public class Category {
         isDefault = aDefault;
     }
 
-    public Classification getClassification() {
+    public int getClassification() {
         return classification;
     }
 
-    public void setClassification(Classification classification) {
+    public void setClassification(int classification) {
         this.classification = classification;
     }
 }

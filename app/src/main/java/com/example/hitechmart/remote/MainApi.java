@@ -24,7 +24,7 @@ import retrofit2.http.Query;
 
 public interface MainApi {
 
-    @POST("v1/user/")
+    @POST("/v1/user/")
     Call<User> createUser(@Body User user);
 
     @POST("v1/login/")
@@ -38,6 +38,8 @@ public interface MainApi {
 
     @POST("v1/user/reset_password/")
     Call<JsonObject> resetPassword(@Header("Authorization") String access_token, @Body ResetRequest resetRequest);
+
+
 
     @GET("/v1/classification/{id}/category/")
     Call<ArrayList<Category>> getCategoryWithClassification(@Path("id") int classificationId);
