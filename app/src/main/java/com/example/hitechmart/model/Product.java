@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Product implements Serializable {
@@ -134,16 +135,20 @@ public class Product implements Serializable {
         this.subproduct = subproduct;
     }
 
-    public int getPriceCurrent() {
-        return priceCurrent;
+    public String getPriceCurrent() {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###,###" );
+
+        return decimalFormat.format(priceCurrent) + "₩";
     }
 
     public void setPriceCurrent(int priceCurrent) {
         this.priceCurrent = priceCurrent;
     }
 
-    public int getPriceOriginal() {
-        return priceOriginal;
+    public String getPriceOriginal() {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###,###" );
+
+        return   decimalFormat.format(priceOriginal) + "₩";
     }
 
     public void setPriceOriginal(int priceOriginal) {

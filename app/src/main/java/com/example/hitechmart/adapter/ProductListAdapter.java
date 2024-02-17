@@ -58,8 +58,8 @@ public class ProductListAdapter extends BaseAdapter {
 
             binding.productName.setText(product.getTitle());
             binding.productBrand.setText(product.getBrand());
-            binding.productPriceCurrent.setText("$" + product.getPriceCurrent());
-            binding.productPriceOriginal.setText("$" + product.getPriceOriginal());
+            binding.productPriceCurrent.setText(product.getPriceCurrent());
+            binding.productPriceOriginal.setText(product.getPriceOriginal());
 
             if (product.getImage() != null && product.getImage().getImage() != null)
                 Glide.with(binding.productImage).load(product.getImage().getImage()).into(binding.productImage);

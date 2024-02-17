@@ -72,6 +72,12 @@ public class ProductDetailsActivity extends BaseActivity<ActivityProductDetailsB
             }
         });
 
+        binding.productBrand.setText(product.getBrand());
+        binding.productName.setText(product.getTitle());
+        binding.productPriceCurrent.setText(product.getPriceCurrent());
+        binding.productPriceOriginal.setText(product.getPriceOriginal());
+        binding.productDetails.setText(product.getDescription());
+
 
 
 

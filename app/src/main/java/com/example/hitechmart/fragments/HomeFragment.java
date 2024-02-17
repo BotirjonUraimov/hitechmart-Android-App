@@ -81,7 +81,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
 
     private void loadBanners() {
 
-        bannerArrayList.clear();
+        //bannerArrayList.clear();
         Call<ArrayList<Banner>> call = parent.mainApi.getBanners();
 
         call.enqueue(new Callback<ArrayList<Banner>>() {

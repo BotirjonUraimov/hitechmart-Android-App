@@ -1,70 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    >
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:gravity="center"
-            app:titleTextColor="@color/black">
+            android:layout_weight="0"
 
-            <TextView
-                android:id="@+id/pageTitle"
-                android:layout_width="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="@color/white"
+                android:gravity="center"
+                app:titleTextColor="@color/black">
+
+                <TextView
+                    android:id="@+id/pageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="6sp"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:ellipsize="end"
+                    android:text="Home"
+                    android:textColor="#201a1b"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/appBar">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+           >
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/productImageViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pagerIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/productImageViewPager"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/colorLine"
+                    app:layout_constraintTop_toBottomOf="@+id/productImageViewPager" />
+
+
+                <TextView
+                    android:id="@+id/productBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.06"
+                    android:lineSpacingExtra="7sp"
+                    android:paddingHorizontal="8dp"
+                    android:textColor="#9d9fa2"
+                    android:textSize="11sp"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line"
+                    tools:text="Polham" />
+
+
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="6dp"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.04"
+
+                    android:lineSpacingExtra="4sp"
+                    android:maxLines="2"
+                    android:paddingHorizontal="8dp"
+                    android:textColor="#4b4949"
+                    android:textSize="15sp"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/productBrand"
+                    tools:text="Hooded half duffel coat half duffel coat" />
+
+
+                <TextView
+                    android:id="@+id/productPriceCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.04"
+                    android:lineSpacingExtra="4sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/productName"
+                    tools:text="$908" />
+
+                <TextView
+                    android:id="@+id/productPriceOriginal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="end"
+                    android:letterSpacing="0.04"
+                    android:lineSpacingExtra="4sp"
+                    android:paddingHorizontal="3dp"
+                    android:textColor="#b0afaf"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/productName"
+                    tools:text="$1200" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLine"
+                    app:layout_constraintBottom_toBottomOf="@+id/productPriceOriginal"
+                    app:layout_constraintLeft_toLeftOf="@+id/productPriceOriginal"
+                    app:layout_constraintRight_toRightOf="@+id/productPriceOriginal"
+                    app:layout_constraintTop_toTopOf="@+id/productPriceOriginal" />
+
+                <ImageView
+                    android:id="@+id/borderLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#e8e8e8"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/productPriceCurrent" />
+
+                <TextView
+                    android:id="@+id/tvColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableRight="@drawable/ic_category"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingExtra="-4sp"
+                    android:padding="16dp"
+                    android:text="Color"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/borderLine" />
+
+                <ImageView
+                    android:id="@+id/colorLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e8e8e8"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvColor" />
+
+                <TextView
+                    android:id="@+id/tvSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableRight="@drawable/ic_category"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingExtra="-4sp"
+                    android:padding="16dp"
+                    android:text="Size"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDetails"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/colorLine"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/sizeLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e8e8e8"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSize" />
+
+                <TextView
+                    android:id="@+id/tvDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingExtra="-4sp"
+                    android:paddingLeft="14dp"
+                    android:text="Details"
+                    android:textColor="@color/black"
+                    android:textFontWeight="500"
+                    android:textSize="16sp"
+
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sizeLine" />
+
+                <TextView
+                    android:id="@+id/productDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp"
+                    android:text="This is a short text that provides a quick overview of the product. They can be used as a standalone piece of content, or they can be used as a teaser to encourage website visitors to click on a longer description.This is a short text that provides a quick overview of the product. They can be used as a standalone piece of content, or they can be used as a teaser to encourage website visitors to click on a longer description.This is a short text that provides a quick overview of the product. They can be used as a standalone piece of content, or they can be used as a teaser to encourage website visitors to click on a longer description."
+                    app:layout_constraintTop_toBottomOf="@+id/tvDetails"
+                    tools:layout_editor_absoluteX="4dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_weight="0">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
-                android:gravity="center_horizontal"
-                android:lineSpacingExtra="6sp"
-                android:maxLines="1"
-                android:minLines="1"
-                android:ellipsize="end"
-                android:text="Home"
-                android:textColor="#201a1b"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="4sp"
+                android:text="Add to Cart"
+               android:gravity="center"
+                android:textColor="#ffffff"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"/>
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="29dp"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#ffffff"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="4sp"
+                android:textAllCaps="true"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:text="Buy now"/>
 
 
-        </androidx.appcompat.widget.Toolbar>
 
+        </LinearLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/productImageViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pagerIndicatorView"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/productImageViewPager"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
