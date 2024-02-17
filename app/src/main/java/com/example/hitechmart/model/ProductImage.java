@@ -2,7 +2,9 @@ package com.example.hitechmart.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProductImage {
+import java.io.Serializable;
+
+public class ProductImage implements Serializable {
 
     @SerializedName("image")
     private String image;

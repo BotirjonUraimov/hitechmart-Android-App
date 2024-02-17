@@ -1,12 +1,16 @@
 package com.example.hitechmart.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
+import com.example.hitechmart.activity.ProductDetailsActivity;
 import com.example.hitechmart.base.BaseAdapter;
+import com.example.hitechmart.base.BaseAdapterListener;
 import com.example.hitechmart.base.BaseViewHolder;
 import com.example.hitechmart.databinding.ItemProductBinding;
 import com.example.hitechmart.model.Product;
@@ -15,11 +19,13 @@ import java.util.ArrayList;
 
 public class ProductListAdapter extends BaseAdapter {
 
+
     private ArrayList<Product> productsArrayList;
 
     public ProductListAdapter(ArrayList<Product> productsArrayList) {
         this.productsArrayList = productsArrayList;
     }
+
 
     @NonNull
     @Override
@@ -58,6 +64,18 @@ public class ProductListAdapter extends BaseAdapter {
             if (product.getImage() != null && product.getImage().getImage() != null)
                 Glide.with(binding.productImage).load(product.getImage().getImage()).into(binding.productImage);
 
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(binding.getRoot().getContext(), ProductDetailsActivity.class);
+                    int id = productsArrayList.get(position).getId();
+                    // Product model Serializable dan implement qilinishi kerak
+                    intent.putExtra("product", product);
+                    binding.getRoot().getContext().startActivity(intent);
+
+
+                }
+            });
         }
     }
 }

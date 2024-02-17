@@ -60,7 +60,11 @@ public interface MainApi {
     @GET("v1/classification/")
     Call<ArrayList<Classification>> getClassifications();
 
-    // Home Page
+    // Product Page
     @GET("/v1/subproduct/{id}/products/")
     Call<ArrayList<Product>> getProducts(@Path("id") int subproductId);
+
+    @GET("/v1/product/{id}")
+    Call<Product> getProduct(@Path("id") int productId);
+
 }

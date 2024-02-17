@@ -9,14 +9,21 @@ import com.example.hitechmart.base.BaseAdapter;
 import com.example.hitechmart.base.BaseViewHolder;
 import com.example.hitechmart.databinding.ItemDotBinding;
 import com.example.hitechmart.model.Banner;
+import com.example.hitechmart.model.ProductImage;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class IndicatorAdapter extends BaseAdapter {
 
-    private ArrayList<Banner> bannerArrayList;
+
+    private int size;
+
     private int selectedDotPosition = 0;
 
+    public void setSize(int size) {
+        this.size = size;
+    }
 
     public int getSelectedDotPosition() {
         return selectedDotPosition;
@@ -26,9 +33,10 @@ public class IndicatorAdapter extends BaseAdapter {
         this.selectedDotPosition = selectedDotPosition;
     }
 
-    public IndicatorAdapter(ArrayList<Banner> bannerArrayList) {
-        this.bannerArrayList = bannerArrayList;
+    public IndicatorAdapter(int size) {
+        this.size = size;
     }
+
 
     @NonNull
     @Override
@@ -44,7 +52,7 @@ public class IndicatorAdapter extends BaseAdapter {
 
     @Override
     public int getItemCount() {
-        return bannerArrayList.size();
+        return size;
     }
 
     class DotViewHolder extends BaseViewHolder<ItemDotBinding> {
