@@ -28,6 +28,9 @@
         </activity>
 
         <activity android:name=".MainActivity"/>
+        <activity android:name=".activity.ProductListActivity"
+            android:theme="@style/AppTheme.Onboarding"
+            />
         <activity android:name=".LoginActivity"
             android:theme="@style/AppTheme"
             />

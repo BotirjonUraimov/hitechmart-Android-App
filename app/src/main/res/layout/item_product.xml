@@ -63,7 +63,7 @@
             android:lineSpacingExtra="4sp"
             android:minLines="2"
             android:maxLines="2"
-
+            android:ellipsize="end"
             android:paddingHorizontal="8dp"
             android:textColor="#4b4949"
             android:textSize="12sp"

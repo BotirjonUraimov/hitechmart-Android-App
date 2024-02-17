@@ -1,5 +1,6 @@
 package com.example.hitechmart.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.hitechmart.activity.ProductListActivity;
 import com.example.hitechmart.adapter.ClassificationAdapter;
 import com.example.hitechmart.base.BaseAdapterListener;
 import com.example.hitechmart.base.BaseFragment;
@@ -47,17 +49,23 @@ public class ProductsFragment extends BaseFragment<FragmentProductsBinding> {
         adapter.setListener(new BaseAdapterListener() {
 
             @Override
-            public void onCategoryClick(int id, ClassificationAdapter.Type type) {
+            public void onCategoryClick(int id, String title, ClassificationAdapter.Type type) {
                 if (type == ClassificationAdapter.Type.CLASSIFICATION) {
                     binding.tvBackBtn.setVisibility(View.VISIBLE);
                     binding.line.setVisibility(View.VISIBLE);
                     binding.tvBackBtn.setText("Classification");
                     loadCategory(id);
                 } else if (type == ClassificationAdapter.Type.CATEGORY) {
+
                     binding.tvBackBtn.setVisibility(View.VISIBLE);
                     binding.line.setVisibility(View.VISIBLE);
                     binding.tvBackBtn.setText("Category");
                     loadSubproduct(id);
+                } else if (type == ClassificationAdapter.Type.SUBPRODUCT) {
+                    Intent intent = new Intent(getContext(), ProductListActivity.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("title", title);
+                    startActivity(intent);
                 }
             }
         });
